@@ -1,39 +1,65 @@
 # Duo Weather Plugin for InkyPi
 
-Display current weather and hourly forecasts with dynamic condition-based backgrounds, visually inspired by the iPhone Duo weather interface. Designed for quick readability and optimized for e-paper displays
+A weather plugin focused on current conditions and hourly forecasts, with dynamic condition-based backgrounds visually inspired by the iPhone Duo weather interface
 
-A weather plugin inspired by the iPhone Duo Weather widget: current condition, high/low, location time, a large current temperature, and an hourly forecast row.
+Duo Weather combines large weather information, hourly forecasting and changing visual backgrounds in a layout designed for quick readability on e-paper displays
 
-Duo Weather keeps the same configuration and weather providers as Mini Weather, with an independent layout focused on a full-bleed sky background and hourly data.
+## Install
+
+Install the plugin using the InkyPi CLI:
+
+    inkypi plugin install duo_weather https://github.com/saulob/InkyPi-Duo-Weather
+
+This plugin is an extension for the [InkyPi](https://github.com/fatihak/InkyPi) e-paper display frame and includes the following features:
 
 ## Features
 
-- Current weather with icon, condition text, and large temperature
-- Daily high and low temperatures
-- Current time based on the configured time zone
-- Hourly forecast sampled from real provider hourly data
-- Support for multiple languages
-- Location selection via coordinates or quick presets
-- Time zone handling based on location or device
-- Unit selection (Celsius, Fahrenheit, or Kelvin)
-- Weather providers: Open-Meteo (no API key required) or OpenWeatherMap (API key required)
+* Current weather conditions
+* Current temperature
+* High and low temperatures
+* Hourly weather forecast
+* Weather condition icons
+* Dynamic backgrounds based on weather conditions
+* Multi-language support
+* Quick location selection
+* Manual latitude and longitude input
+* Metric and Imperial units
+* Horizontal and vertical layout support
+* Optimized for e-paper displays
 
 ## Settings
 
-- Language selection with localized condition labels
-- Quick Location presets or manual latitude and longitude
-- Weather provider: Open-Meteo or OpenWeatherMap (requires API key)
-- Unit selection Celsius, Fahrenheit, or Kelvin
-- Title mode: location or custom text
-- Show or hide weather icons
-- Optional colorful icons
-- Time zone selection: location time zone or local time zone
+* Language selection
+* Quick Location presets or manual latitude and longitude
+* Unit selection
+* Weather location configuration
+* Visual and layout customization
+
+## Weather Backgrounds
+
+The plugin dynamically changes its visual background according to the current weather condition
+
+Supported visual conditions include clear, cloudy, overcast, rain and other weather states, while maintaining strong contrast and readability for e-paper displays
+
+## UI
+
+* Large current temperature and weather condition
+* Hourly forecast for quick weather overview
+* High and low temperature indicators
+* Dynamic condition-based visual backgrounds
+* Layout automatically adapts to different screen orientations
+* Visual style inspired by the iPhone Duo weather interface
 
 ## Notes
 
-- Uses Open-Meteo free API (no key required) or OpenWeatherMap (API key required)
-- Hourly points are selected from provider hourly forecasts, not from daily forecasts
-- Sky background is rendered locally with PIL from condition-specific presets
-- Presets add local glow, soft clouds, haze, precipitation, stars, and subtle lightning effects
-- Unknown conditions use the `default` atmospheric preset
-- Designed for e-paper contrast and different screen sizes
+* Designed for quick glance scenarios
+* Dynamic backgrounds are generated according to current weather conditions
+* Works with horizontal and vertical InkyPi layouts
+* Optimized for readability and contrast on e-paper displays
+
+## Screenshots
+
+- Duo Weather widget on the main dashboard
+- Plugin settings screen
+
+<p align="center"> <img src="screenshots/example.png" width="45%" /> <img src="screenshots/settings.png" width="45%" /> </p>
