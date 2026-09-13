@@ -1,0 +1,68 @@
+{% extends "plugin.html" %}
+
+{% block content %}
+{% if units == 'metric' %}
+    {% set unit_symbol_current = '°C' %}
+    {% set unit_degree_current = '°' %}
+    {% set unit_letter_current = 'C' %}
+    {% set unit_symbol_range = '°' %}
+{% elif units == 'imperial' %}
+    {% set unit_symbol_current = '°F' %}
+    {% set unit_degree_current = '°' %}
+    {% set unit_letter_current = 'F' %}
+    {% set unit_symbol_range = '°' %}
+{% else %}
+    {% set unit_symbol_current = 'K' %}
+    {% set unit_degree_current = '' %}
+    {% set unit_letter_current = 'K' %}
+    {% set unit_symbol_range = 'K' %}
+{% endif %}
+{% set temp_str = current_temperature|string %}
+{% set temp_digits = (temp_str|replace('-', ''))|length %}
+{% if temp_digits > 3 %}
+    {% set temp_class = 3 %}
+{% else %}
+    {% set temp_class = temp_digits %}
+{% endif %}
+
+<div class="duo-weather-shell sky-{{ sky_theme }}{% if not show_icons %} no-icons{% endif %}{% if color_icons %} color-icons{% endif %}{% if is_night %} is-night{% endif %}" style="background-image: url('{{ sky_background }}'); --duo-text-shadow-opacity: {{ background_text_shadow|default(0.4) }}; --duo-text-opacity: {{ background_text_opacity|default(1) }};">
+    <div class="duo-location">{{ title }}</div>
+
+    <header class="duo-top">
+        <div class="duo-condition">
+            {% if show_icons %}
+            <img class="duo-condition-icon" src="{{ current_day_icon }}" alt="{{ current_condition }}">
+            {% endif %}
+            <div class="duo-condition-text">
+                <div class="duo-condition-label">{{ current_condition }}</div>
+                <div class="duo-range">{{ high_label }}:{{ current_high }}<span class="range-unit">{{ unit_symbol_range }}</span> {{ low_label }}:{{ current_low }}<span class="range-unit">{{ unit_symbol_range }}</span></div>
+            </div>
+        </div>
+        <div class="duo-clock">{{ current_time }}</div>
+    </header>
+
+    <section class="duo-current">
+        <div class="duo-temp digits-{{ temp_class }}">
+            <span class="duo-temp-number">{{ current_temperature }}</span>
+            {% if unit_degree_current %}
+            <span class="duo-temp-degree">{{ unit_degree_current }}</span><span class="duo-temp-letter">{{ unit_letter_current }}</span>
+            {% else %}
+            <span class="unit">{{ unit_letter_current }}</span>
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="duo-hourly">
+        {% for hour in hourly_points %}
+        <div class="duo-hour">
+            <div class="duo-hour-time"><span class="hour-value">{{ hour.hour_value }}</span>{% if hour.hour_suffix %}<span class="hour-suffix">{{ hour.hour_suffix }}</span>{% endif %}</div>
+            {% if show_icons %}
+            <img class="duo-hour-icon" src="{{ hour.icon }}" alt="{{ hour.time }}">
+            {% endif %}
+            <div class="duo-hour-temp">{{ hour.temperature }}<span class="hour-temp-unit">{{ unit_symbol_range }}</span></div>
+        </div>
+        {% endfor %}
+    </section>
+</div>
+{% endblock %}
+

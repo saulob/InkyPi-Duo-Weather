@@ -1,0 +1,323 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* The base template adds body padding/margin for card-style plugins; this
+   widget is a full-bleed sky photo, so the outer whitespace is removed. */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.duo-weather-shell {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 3.2dvh 4.6dvw 3.2dvh;
+  font-family: "Jost";
+  background-color: #6a9fd0;
+  background-size: cover;
+  background-position: center;
+  color: rgba(255, 255, 255, var(--duo-text-opacity, 1));
+  text-shadow: 0 0.15dvh 0.5dvh rgba(0, 0, 0, var(--duo-text-shadow-opacity, 0.4));
+}
+
+.duo-location {
+  flex: 0 0 auto;
+  text-align: center;
+  font-size: min(4.6dvh, 3.4dvw);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 auto 0.8dvh;
+  max-width: 70%;
+}
+
+.duo-top {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 3dvw;
+}
+
+.duo-condition {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.8dvw;
+  min-width: 0;
+  flex: 1;
+}
+
+.duo-condition-icon {
+  width: min(10dvh, 8.4dvw);
+  height: min(10dvh, 8.4dvw);
+  object-fit: contain;
+  flex: 0 0 auto;
+  margin-top: 0.5dvh;
+  opacity: 1;
+}
+
+.duo-weather-shell:not(.color-icons) .duo-condition-icon,
+.duo-weather-shell:not(.color-icons) .duo-hour-icon {
+  filter: brightness(0) invert(1) drop-shadow(0 0.2dvh 0.45dvh rgba(0, 0, 0, 0.35));
+}
+
+.duo-condition-text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6dvh;
+}
+
+.duo-condition-label {
+  font-size: min(6.8dvh, 5dvw);
+  font-weight: 500;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.duo-range {
+  font-size: min(5.6dvh, 4.1dvw);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  opacity: 0.95;
+  white-space: nowrap;
+}
+
+.range-unit,
+.hour-temp-unit {
+  font-size: 0.72em;
+  font-weight: 500;
+  margin-left: 0.02em;
+}
+
+.duo-clock {
+  font-size: min(6.8dvh, 5dvw);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  flex: 0 0 auto;
+}
+
+.duo-current {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 0;
+  padding-top: 0.6dvh;
+}
+
+.duo-temp {
+  display: inline-flex;
+  align-items: flex-start;
+  font-size: min(44dvh, 33dvw);
+  font-weight: 300;
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+}
+
+.duo-temp .unit {
+  font-size: 0.42em;
+  font-weight: 300;
+  line-height: 1;
+  margin-left: 0.02em;
+}
+
+.duo-temp-degree,
+.duo-temp-letter {
+  display: inline-block;
+  font-weight: 300;
+  letter-spacing: 0;
+}
+
+.duo-temp-degree {
+  font-size: 0.25em;
+  line-height: 0.8;
+  margin-left: 0.08em;
+  position: relative;
+  top: -0.04em;
+}
+
+.duo-temp-letter {
+  font-size: 0.31em;
+  line-height: 1;
+  margin-left: 0.13em;
+  margin-top: 0.08em;
+}
+
+.duo-temp.digits-3 {
+  font-size: min(34dvh, 25dvw);
+}
+
+.duo-hourly {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1dvw;
+  width: 100%;
+  margin-top: auto;
+}
+
+.duo-hour {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.4dvh;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.duo-hour-time,
+.duo-hour-temp {
+  font-size: min(5.4dvh, 3.9dvw);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.hour-temp-unit {
+  font-size: 0.88em;
+  line-height: 0.9;
+  margin-left: 0.04em;
+}
+
+.hour-suffix {
+  font-size: 0.78em;
+  font-weight: 500;
+  line-height: 0.9;
+  margin-left: 0.05em;
+  text-transform: uppercase;
+}
+
+.duo-hour-icon {
+  width: min(9dvh, 7.6dvw);
+  height: min(9dvh, 7.6dvw);
+  object-fit: contain;
+  opacity: 1;
+}
+
+.color-icons .duo-condition-icon,
+.color-icons .duo-hour-icon {
+  filter: none;
+}
+
+.no-icons .duo-hour {
+  gap: 1.8dvh;
+}
+
+.no-icons .duo-temp {
+  font-size: min(47dvh, 35dvw);
+}
+
+.no-icons .duo-temp.digits-3 {
+  font-size: min(36dvh, 27dvw);
+}
+
+@media (orientation: portrait) {
+  .duo-weather-shell {
+    padding: 2.8dvh 3.8dvw 9dvh;
+  }
+
+  .duo-location {
+    width: 100%;
+    max-width: 82%;
+    font-size: min(3dvh, 5dvw);
+    margin-bottom: 1.5dvh;
+  }
+
+  .duo-top {
+    gap: 1.8dvw;
+  }
+
+  .duo-condition {
+    gap: 1.4dvw;
+  }
+
+  .duo-condition-text {
+    gap: 1dvh;
+  }
+
+  .duo-condition-label {
+    font-size: min(4.8dvh, 7.2dvw);
+  }
+
+  .duo-range,
+  .duo-clock {
+    font-size: min(3.8dvh, 5.9dvw);
+  }
+
+  .duo-clock {
+    font-size: min(4.6dvh, 6.8dvw);
+  }
+
+  .duo-current {
+    flex: 0 0 auto;
+    justify-content: flex-start;
+    padding-top: 1.6dvh;
+    padding-bottom: 0;
+  }
+
+  .duo-weather-shell .duo-temp {
+    font-size: min(21dvh, 33dvw);
+  }
+
+  .duo-weather-shell .duo-temp.digits-3 {
+    font-size: min(17dvh, 26dvw);
+  }
+
+  .duo-hourly {
+    margin-top: auto;
+    gap: 1.2dvw;
+  }
+
+  .duo-hour {
+    gap: 1.1dvh;
+  }
+
+  .duo-hour-time,
+  .duo-hour-temp {
+    font-size: min(4.5dvh, 6.4dvw);
+  }
+
+  .duo-condition-icon {
+    width: min(8.5dvh, 13.5dvw);
+    height: min(8.5dvh, 13.5dvw);
+  }
+
+  .duo-hour-icon {
+    width: min(8.8dvh, 12.5dvw);
+    height: min(8.8dvh, 12.5dvw);
+  }
+}
+
+@media (max-width: 250px) {
+  .duo-weather-shell {
+    font-family: "Dogica";
+  }
+
+  .duo-temp {
+    letter-spacing: 0;
+  }
+}
